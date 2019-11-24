@@ -1,0 +1,15 @@
+##OpenGL GLIB
+GSTAP
+
+Perspective 70
+LookAt 0 0 3  0 0 0  0 1 0
+
+Vertex   oval.vert
+Fragment oval.frag
+Program  oval         \
+    uAd <.001 .1 .5>  \
+    uBd <.001 .1 .5>  \
+    uTol <0. 0. 1.>
+
+Color 1 0.5 1
+Obj pigY.obj
