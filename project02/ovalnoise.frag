@@ -23,44 +23,17 @@ const float EPS = 0.001;
 
 vec3 ChromaDepth(float t) {
     t = clamp(t, 0., 1.);
-
-    float r = 1.;
-    float g = 0.;
-    float b = 1. - 6. * (t - (5./6.));
-
-    if (t <= (5./6.)) {
-        r = 6. * (t - (4./6.));
-        g = 0.;
-        b = 1.;
-    }
-    if (t <= (4./6.)) {
-        r = 0.;
-        g = 1. - 6. * (t - (3./6.));
-        b = 1.;
-    }
-    if (t <= (3./6.)) {
-        r = 0.;
-        g = 1.;
-        b = 6. * (t - (2./6.));
-    }
-    if (t <= (2./6.)) {
-        r = 1. - 6. * (t - (1./6.));
-        g = 1.;
-        b = 0.;
-    }
-    if (t <= (1./6.)) {
-        r = 1.;
-        g = 6. * t;
-    }
-
-    return vec3(r, g, b);
+    vec3 color;
+    color.r = clamp(1. - 4.*(t - .25), 0., 1.);
+    color.g = clamp(min(4.*t, 1. - 4.*(t - .75)), 0., 1.);
+    color.b = clamp(4.*(t - .50), 0., 1.);
+    return color;
 }
 
 void main() {
     vec3 color = vColor;
     if (uUseChromaDepth) {
-        float t = (2./3.) * (vDepth - uChromaRed) / (uChromaBlue - uChromaRed);
-        t = clamp(t, 0., 2./3.);
+        float t = (vDepth - uChromaRed) / (uChromaBlue - uChromaRed);
         color = ChromaDepth(t);
     }
 
