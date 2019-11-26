@@ -12,11 +12,12 @@ uniform float uLightX, uLightY, uLightZ;
 
 void main() {
 	// Add 1 to both x and y to make decaying exponentials nicer.
-	float x1p = aVertex.x + 1.;
-	float y1p = aVertex.y + 1.;
-	float z = uA * cos(2*M_PI * uB * x1p + uC) * exp(-(uD * x1p + uE * y1p));
-	float dzdx = uA * (-sin(2*M_PI * uB * x1p + uC) * 2*M_PI * uB + cos(2*M_PI * uB * x1p + uC) * (-uD)) * exp(-(uD * x1p + uE * y1p));
-	float dzdy = uA * cos(2*M_PI * uB * x1p + uC) * (-uE) * exp(-(uD * x1p + uE * y1p));
+	float alpha = 2*M_PI * uB * (aVertex.x + 1.) + uC;
+	float beta = uD * (aVertex.x + 1.) + uE * (aVertex.y + 1.);
+
+	float z = uA * cos(alpha) * exp(-beta);
+	float dzdx = -(2*M_PI * uB * tan(alpha) + uD) * z;
+	float dzdy = -uE * z;
 
 	vec4 vertex = vec4(aVertex.xy, z, 1.);
 	vMCposition = vertex.xyz;
