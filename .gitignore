@@ -1,2 +1,3 @@
-noise2d.064.tex
-noise3d.064.tex
+noise2d.[0-9][0-9][0-9].tex
+noise3d.[0-9][0-9][0-9].tex
+errorlog.txt
