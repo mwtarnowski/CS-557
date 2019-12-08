@@ -1,0 +1,48 @@
+##OpenGL GLIB
+GSTAP
+
+Perspective 70
+LookAt 0 0 3  0 0 0  0 1 0
+
+Vertex   texture.vert
+Fragment texture.frag
+Program  texture  uTexUnit 6
+
+Texture2D 6 nvposx.bmp
+QuadYZ 5. 5. 10 10
+
+Texture2D 6 nvnegx.bmp
+QuadYZ -5. 5. 10 10
+
+Texture2D 6 nvposy.bmp
+QuadXZ 5. 5. 10 10
+
+Texture2D 6 nvnegy.bmp
+QuadXZ -5. 5. 10 10
+
+Texture2D 6 nvposz.bmp
+QuadXY 5. 5. 10 10
+
+Texture2D 6 nvnegz.bmp
+QuadXY -5. 5. 10 10
+
+CubeMap 6 nvposx.bmp nvnegx.bmp  nvposy.bmp nvnegy.bmp   nvposz.bmp nvnegz.bmp
+
+CubeMap 7 nvposx.bmp nvnegx.bmp  nvposy.bmp nvnegy.bmp   nvposz.bmp nvnegz.bmp
+
+Vertex   refraction.vert
+Fragment refraction.frag
+Program  refraction         \
+    uReflectUnit 6          \
+    uRefractUnit 7          \
+    uA <-1.0 0.00 1.0>      \
+    uB <0.0 2.0 5.0>        \
+    uC <0.0 0.0 12.56>      \
+    uD <0. 0. 5.>           \
+    uE <0. 0. 5.>           \
+    uEta <0. 1.4 4.0>       \
+    uNoiseAmp <0. 0. 5.>    \
+    uNoiseFreq <0.1 1. 5.>  \
+    uMix <0. 0. 1.>
+
+QuadXY  0.  1.  200 200
