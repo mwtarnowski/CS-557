@@ -1,8 +1,8 @@
 ##OpenGL GLIB
 GSTAP
 
-Ortho -5. 5.   -5. 5.
-LookAt 0 0 2  0 0 0  0 1 0
+Ortho -1. 1.  -1. 1.
+LookAt 0 0 1  0 0 0  0 1 0
 
 Texture2D 5 grid.bmp
 
@@ -17,4 +17,4 @@ Program  mag                         \
     uSharpFactor <0. 1. 5.>          \
     uImageUnit 5
 
-QuadXY 0 5.
+QuadXY 0 1.
