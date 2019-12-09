@@ -1,0 +1,20 @@
+##OpenGL GLIB
+GSTAP
+
+Ortho -5. 5.   -5. 5.
+LookAt 0 0 2  0 0 0  0 1 0
+
+Texture2D 5 grid.bmp
+
+Vertex   mag.vert
+Fragment mag.frag
+Program  mag                         \
+    uScenter <0. .5 1.>              \
+    uTcenter <0. .5 1.>              \
+    uRadius <0.01 .1 .5>             \
+    uMagFactor <.1 1. 25.>           \
+    uRotAngle <-3.14159 0. 3.14159>  \
+    uSharpFactor <0. 1. 5.>          \
+    uImageUnit 5
+
+QuadXY 0 5.
